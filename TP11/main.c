@@ -30,7 +30,7 @@ int main(void)
     int i=0;
     MY_REG port_a;
 
-    if((ALLEGRO))   //ver que hacer con esto!!!!!!
+    if((ALLEGRO))
     {
         //allegro(port_a);
         return (0);
@@ -58,7 +58,7 @@ int main(void)
             {
                continue; 
             }
-        system("clear");
+        //system("clear");
         //==========================================================================================================================================================================================================================================================================
 
             port_a.w.word = 0x0000; //Asi empiezan todos los leds apagados
