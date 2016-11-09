@@ -15,7 +15,9 @@
 MY_REG case_set (MY_REG);
 MY_REG case_clear (MY_REG);
 MY_REG case_blink (MY_REG);
-MY_REG case_number (int,MY_REG);
+MY_REG case_number_on (int,MY_REG);
+
+MY_REG case_number_off (int,MY_REG);
 
 void impresion (MY_REG);
 

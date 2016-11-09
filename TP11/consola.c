@@ -41,10 +41,18 @@ MY_REG case_blink (MY_REG port_a)
     return port_a;
 }
 
-MY_REG case_number (int n, MY_REG port_a)
+MY_REG case_number_on (int n, MY_REG port_a)
 {
     //n = (c - 48);
     port_a = bitSet(port_a, n, PORTA);
+    impresion (port_a);
+    return port_a;
+}
+
+MY_REG case_number_off (int n, MY_REG port_a)
+{
+    //n = (c - 48);
+    port_a = bitClr(port_a, n, PORTA);
     impresion (port_a);
     return port_a;
 }

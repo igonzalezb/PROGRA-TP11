@@ -103,9 +103,21 @@ MY_REG validacion (char c, pinsT leds[], MY_REG port_a) //Recibo el valor de la 
         {
             n = (c - 48);
             //leds[n].value = (!(leds[n].value));
-            leds[n].value = '1';
-            set_pin_zero_or_one (n,leds);
-            port_a = case_number (n,port_a);
+            if(leds[n].value == '1')
+            {
+                leds[n].value = '0';
+                set_pin_zero_or_one (n,leds);
+                port_a = case_number_off (n,port_a);
+            }
+            else if (leds[n].value == '0')
+            {
+                leds[n].value = '1';
+                set_pin_zero_or_one (n,leds);
+                port_a = case_number_on (n,port_a);
+            }
+                
+            //leds[n].value = (!(leds[n].value));
+            
         }
         break;
     }
