@@ -12,7 +12,7 @@
 
 #define CANT_LEDS 7 
 
-typedef struct                  //PONER EN EL .H
+typedef struct                  
 {
     char led_name [10];
     char pin [4];

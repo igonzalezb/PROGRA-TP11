@@ -17,8 +17,8 @@
 #include "nonblock.h"
 #include "consola.h"
 
-//MY_REG validacion (char, pinsT, MY_REG);
-
 MY_REG validacion (char c, pinsT leds[], MY_REG port_a);
+
+MY_REG blink (pinsT leds[], MY_REG port_a);
 
 #endif /* INPUT_CONTROL_H */

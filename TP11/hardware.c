@@ -26,19 +26,6 @@ void inicio_estado_pines (pinsT leds[])
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//void hardware (char value, int lednum) //cuando se llama a esta funcion? (ponerlo sin funcion, es inicializacionç)
-//{
-//    pin_out_or_in (lednum);                 // de donde viene lednum????
-//    leds[lednum] .value = '0';
-//    set_pin_zero_or_one (lednum); //
-//}
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////// FUNCIONES UTILES ///////////////////////////////////////////
    
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +34,7 @@ void inicio_estado_pines (pinsT leds[])
 ///////////////////////////////////////////export_all_pins/////////////////////////////////////////////
 //                                                                                                   //
 // Exporta los pines que se vayan a usar.                                                            //
-// Recibe: Nada.                                                                                     //
+// Recibe: arreglo de estructuras de leds                                                            //
 // Devuelve: Nada.                                                                                   //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,10 +61,10 @@ void inicio_estado_pines (pinsT leds[])
                 printf("Cannot EXPORT PIN. Try again later.\n");
                 exit(1);
             }
-            else
-            {
-                printf("EXPORT File opened succesfully \n");
-            }
+//            else
+//            {
+//                printf("EXPORT File opened succesfully \n");
+//            }
             
             fclose(handle_export);
         }
@@ -87,12 +74,13 @@ void inicio_estado_pines (pinsT leds[])
 //                                                                                                   //
 // Setea el pin en in o out de acuerdo a como este definido en la estructura.                        //
 // Recibe: el numero de pin (No el numero que figura en la Raspberry Pi, sino que el numero de bit). //
+// y el arreglo de estructuras de leds                                                               //
 // Devuelve: Nada.                                                                                   //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
     
      
-    void pin_out_or_in (int i,pinsT leds[])//(NO SE QUE MANDARLE!!!)
+    void pin_out_or_in (int i,pinsT leds[])
     {
         FILE * handle_direction = NULL;
         int nWritten;
@@ -102,9 +90,9 @@ void inicio_estado_pines (pinsT leds[])
     ///////////////////////////////////////////////////////////////////////////////////
         //PARA PROBAR
         //sprintf (stdout,"/sys/class/gpio/gpio%s/direction", leds[i].pin);
-        printf("destino: %s\n", destino);
-
-        printf("CHECK POINT: %s\n", leds[i].pin);
+//        printf("destino: %s\n", destino);
+//
+//        printf("CHECK POINT: %s\n", leds[i].pin);
     //////////////////////////////////////////////////////////////////////////////////////    
         if ((handle_direction = fopen (destino,"w"))==NULL)
         {
@@ -116,10 +104,10 @@ void inicio_estado_pines (pinsT leds[])
             printf("Cannot open DIRECTION pin. Try again later.\n");
             exit(1);
         }
-        else
-        {
-            printf("DIRECTION File for PIN opened succesfully\n");
-        }
+//        else
+//        {
+//            printf("DIRECTION File for PIN opened succesfully\n");
+//        }
         fclose(handle_direction);
     }
 
@@ -127,6 +115,7 @@ void inicio_estado_pines (pinsT leds[])
 //                                                                                                   //
 // Pone el pin en 0 o 1 de acuerdo a lo que la estructura  indique.                                  //
 // Recibe: el numero de pin (No el numero que figura en la Raspberry Pi, sino que el numero de bit.  //
+// y el arreglo de estructuras de leds                                                               //
 // Devuelve: Nada.                                                                                   //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,7 +151,7 @@ void inicio_estado_pines (pinsT leds[])
 ///////////////////////////////////////////unexport_all_pins///////////////////////////////////////////
 //                                                                                                   //
 // Hace un unexport de los pines que se usaron.                                                      //
-// Recibe: Nada.                                                                                     //
+// Recibe: arreglo de estructuras de leds                                                            //
 // Devuelve: Nada.                                                                                   //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -187,8 +176,8 @@ void inicio_estado_pines (pinsT leds[])
                 printf("Cannot open UNEXPORT PIN. Try again later.\n");
                 exit(1); 
             }
-            else
-                printf("UNEXPORT File opened succesfully \n");
+//            else
+//                printf("UNEXPORT File opened succesfully \n");
             fclose(handle_unexport);
         }
     }

@@ -19,7 +19,7 @@
 
 MY_REG case_set (MY_REG port_a)
 {
-    uint mask = 0xFFFF;             //IMPRESION
+    uint mask = 0xFFFF;             
     port_a = maskOn (port_a, mask, PORTA); //Prendo los leds que dice la mascara (todos)
     impresion (port_a);
     return port_a;
@@ -57,6 +57,27 @@ MY_REG case_number_off (int n, MY_REG port_a)
     return port_a;
 }
 
+void welcome (void)
+{
+        system("clear");
+        
+        char c;
+        printf(BLUE_TEXT "\t\t\tBienvenido\n");
+        printf(MAGENTA_TEXT "INSTRUCCIONES:\n");
+        printf(WHITE_TEXT " Si presiona un numero del" GREEN_TEXT " '0' " WHITE_TEXT "al" GREEN_TEXT " '7' " WHITE_TEXT "se enciende o apaga el LED de esa posicion\n");
+        printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'b' " WHITE_TEXT "parpadean los LEDs encendidos hasta que se aprete" GREEN_TEXT " 'b' " WHITE_TEXT "nuevamente\n");
+        printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 's' " WHITE_TEXT "se encienden todos los LEDs\n");
+        printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'c' " WHITE_TEXT "se apagan todos los LEDs\n");
+        printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'ESC' " WHITE_TEXT "finaliza el programa\n");
+        
+        
+        printf(WHITE_TEXT"\n\n Por favor, presione" RED_TEXT " ENTER " WHITE_TEXT"para comenzar");
+        while ((c = getchar()) != '\n')
+            {
+               continue; 
+            }
+        system("clear");
+}
 
 
 
@@ -67,7 +88,7 @@ void impresion (MY_REG port_a)
     long binary;
     binary = decimalToBinary(port_a); //Convierto numero a un int "binario"
     system("clear");
-    printf("LEDs in PORTA: %08ld\n", binary); //Lo imprimo en pantalla
+    printf( WHITE_TEXT "LEDs in" CYAN_TEXT " PORTA" WHITE_TEXT ": " RED_TEXT"%08ld\n" WHITE_TEXT, binary); //Lo imprimo en pantalla
 }
 
 long decimalToBinary(MY_REG port_a) //Convierte numeros a binarios

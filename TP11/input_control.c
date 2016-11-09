@@ -40,61 +40,15 @@ MY_REG validacion (char c, pinsT leds[], MY_REG port_a) //Recibo el valor de la 
         }
         break;
             
-        case 'b': //Los leds prendidos parpadean (se apagan y se vuelven a prender) VER PARPADEOOOOO
+        case 'b': //Los leds prendidos parpadean (se apagan y se vuelven a prender)
         {
-            int k = 0;
-            char c;
-            for (n=0; n <= CANT_LEDS; n++)    //Se hace una copia del estado de los pines en el momento
+            if(port_a.by.hi) //Si el puerto esta todo apagado no entro en blink
             {
-                leds[n].value_copy = leds[n].value;
+               port_a = blink(leds, port_a); 
             }
             
-            while (c != 'b')
-            {
-                
-                k = kbhit();
-                if (k!=0)
-                {
-                    c = (fgetc(stdin));
-                }
-                else
-                {
-                    for (n=0; n <= CANT_LEDS; n++)   //LEDS
-                        {
-                            if (leds[n].value_copy == '1')
-                            {
-                                leds[n].value = '0';
-
-                            }
-                            set_pin_zero_or_one (n,leds);
-                        }
-                        port_a = case_blink (port_a);
-                        //sleep(1); //VER DE PONER OTRO TIMER
-                        usleep(300000);
-                        system("clear");
-                        
-                       for (n=0; n <= CANT_LEDS; n++)   //LEDS
-                        {
-                            if (leds[n].value_copy == '1')
-                            {
-                                leds[n].value = '1';
-
-                            }
-                            set_pin_zero_or_one (n,leds);
-                        }
-                    impresion(port_a);
-                    usleep(300000);
-                    system("clear");
-                }
-               
-            }
-            
-            for (n=0; n <= CANT_LEDS; n++)   //Se guardan en value los estados de los pines antes del parpadeo.
-            {
-                leds[n].value = leds[n].value_copy;
-                
-            }
             impresion(port_a);
+            
         }
         break;
             
@@ -114,8 +68,7 @@ MY_REG validacion (char c, pinsT leds[], MY_REG port_a) //Recibo el valor de la 
                 set_pin_zero_or_one (n,leds);
                 port_a = case_number_on (n,port_a);
             }
-                
-            //leds[n].value = (!(leds[n].value));
+            
             
         }
         break;
@@ -123,4 +76,58 @@ MY_REG validacion (char c, pinsT leds[], MY_REG port_a) //Recibo el valor de la 
     return port_a;
 }
 
+
+MY_REG blink (pinsT leds[], MY_REG port_a) //Funcion de Blink
+{
+    int k = 0;
+    char c;
+    for (n=0; n <= CANT_LEDS; n++)    //Se hace una copia del estado de los pines en el momento
+    {
+        leds[n].value_copy = leds[n].value;
+    }
+
+    while (c != 'b')
+    {
+        k = kbhit();
+        if (k!=0)           //si se apreto un tecla la guardo
+        {
+            c = (fgetc(stdin));
+        }
+        else
+        {
+            for (n=0; n <= CANT_LEDS; n++)   //Apago todos los LEDs
+                {
+                    if (leds[n].value_copy == '1')
+                    {
+                        leds[n].value = '0';
+                    }
+                    set_pin_zero_or_one (n,leds);
+                }
+            port_a = case_blink (port_a);
+            usleep(300000);
+            system("clear");
+
+            for (n=0; n <= CANT_LEDS; n++)   //Vuelvo a prender los LEDs
+            {
+                if (leds[n].value_copy == '1')
+                {
+                    leds[n].value = '1';
+                }
+                set_pin_zero_or_one (n,leds);
+            }
+            impresion(port_a);
+            usleep(300000);
+            system("clear");
+        }
+
+    }
+
+    for (n=0; n <= CANT_LEDS; n++)   //Se guardan en value los estados de los pines antes del parpadeo.
+    {
+        leds[n].value = leds[n].value_copy;
+
+    }
+    return port_a;
+    
+}
 

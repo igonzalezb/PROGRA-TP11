@@ -1,10 +1,3 @@
-
-// VERQUE RECIBEN LAS FUNCIONES Y QUE DEVUELVEEEEEENE!!!!!!!!!!!!!!!! cambiar nombres de funciones en omentarios
-
-
-
-
-
 /////////////////////////////////////////////// EMU_PORTS /////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,9 +11,9 @@
 
 ////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
 //                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
+// Pone en 1 el n-ésimo bit del puerto port.                                                         //
+// Recibe:    puerto (tipo MY_REG), numero de bit y puerto (tipo int) del enum                       //
+// Devuelve: el puerto (MY_REG)		                                                                 //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -50,11 +43,11 @@ MY_REG bitSet(MY_REG reg, uint n, int port)
         
 }
 
-////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
+////////////////////////////////////////////// bitClr /////////////////////////////////////////////////
 //                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
+// Pone en 0 el n-ésimo bit del puerto port.                                                          //
+// Recibe:  puerto (tipo MY_REG), numero de bit y puerto (tipo int) del enum                                                                                   //
+// Devuelve:     el puerto (MY_REG)	                                                                              //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,11 +77,11 @@ MY_REG bitClr (MY_REG reg, uint n, int port) // Pone en 0 el n-ésimo bit del pu
         return reg;
 }
 
-////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
+////////////////////////////////////////////// bitToggle ///////////////////////////////////////////////
 //                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
+// Pone en 1 el n-ésimo bit del puerto port si estaba en 0, en 0 de lo contrario.                    //
+// Recibe:  puerto (tipo MY_REG), numero de bit y puerto (tipo int) del enum                         //
+// Devuelve:  el puerto (MY_REG)	                                                                 //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -118,11 +111,11 @@ MY_REG bitToggle (MY_REG reg, uint n, int port) // Pone en 1 el n-ésimo bit del
         return reg;
 }
 
-////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
+////////////////////////////////////////////// bitGet /////////////////////////////////////////////////
 //                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
+// Devuelve el valor del n-ésimo bit del puerto port.                                                //
+// Recibe:   puerto (tipo MY_REG), numero de bit y puerto (tipo int) del enum                        //
+// Devuelve:  el puerto (MY_REG)	                                                                 //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -153,11 +146,11 @@ uint bitGet(MY_REG reg, uint n, int port) // Devuelve el valor del n-ésimo bit 
     return bit;   
 }
 
-////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
+////////////////////////////////////////////// maskOn /////////////////////////////////////////////////
 //                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
+// Una máscara es una secuencia binaria, que indica los números de bits que se van a poner en 1.     //
+// Recibe:  puerto (tipo MY_REG), mascara y puerto (tipo int) del enum                               //
+// Devuelve:   el puerto (MY_REG)	                                                                 //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -187,11 +180,11 @@ MY_REG maskOn(MY_REG port_a, uint mask, int port) // Una máscara es una secuenc
         
 }
 
-////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
+////////////////////////////////////////////// maskOff ////////////////////////////////////////////////
 //                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
+// Pone en 0 los bits indicados por la máscara                                                       //
+// Recibe:    puerto (tipo MY_REG), mascara y puerto (tipo int) del enum                             //
+// Devuelve:   el puerto (MY_REG)	                                                                 //
 //                                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -218,12 +211,12 @@ MY_REG maskOff(MY_REG reg, uint mask, int port) // Pone en 0 los bits indicados 
   return reg;
 }
 
-////////////////////////////////////////////// bitSet /////////////////////////////////////////////////
-//                                                                                                   //
-// Pone en 1 el n-ésimo bit del puerto port.                                                          //
-// Recibe:                                                                                     //
-// Devuelve:                                                                                   //
-//                                                                                                   //
+////////////////////////////////////////////// maskToggle /////////////////////////////////////////////////
+//                                                                                                      //
+// Invierte el valor de los bits indicados por la máscara                                               //
+// Recibe:  puerto (tipo MY_REG), mascara y puerto (tipo int) del enum                                 //
+// Devuelve:   el puerto (MY_REG)	                                                                   //
+//                                                                                                    //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 MY_REG maskToggle(MY_REG reg, uint mask, int port) // Invierte el valor de los bits indicados por la máscara
