@@ -131,10 +131,10 @@ void inicio_estado_pines (pinsT leds[])
             printf("Cannot open device. Try again later. \n");
             exit(1); 
         }
-        else
-        {
-            printf("Device successfully opened\n");
-        }
+//        else
+//        {
+//            printf("Device successfully opened\n");
+//        }
         
         if(fputc(leds[i].value,handle) == -1)
         {

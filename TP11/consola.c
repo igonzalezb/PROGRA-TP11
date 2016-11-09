@@ -68,8 +68,9 @@ void welcome (void)
         printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'b' " WHITE_TEXT "parpadean los LEDs encendidos hasta que se aprete" GREEN_TEXT " 'b' " WHITE_TEXT "nuevamente\n");
         printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 's' " WHITE_TEXT "se encienden todos los LEDs\n");
         printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'c' " WHITE_TEXT "se apagan todos los LEDs\n");
+        printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'ESPACIO' " WHITE_TEXT "se van prendendo y apagando los LEDs (uno por uno), hasta que se aprete" GREEN_TEXT " 'ESPACIO' " WHITE_TEXT "nuevamente\n");
         printf(WHITE_TEXT " Si presiona" GREEN_TEXT " 'ESC' " WHITE_TEXT "finaliza el programa\n");
-        
+               
         
         printf(WHITE_TEXT"\n\n Por favor, presione" RED_TEXT " ENTER " WHITE_TEXT"para comenzar");
         while ((c = getchar()) != '\n')

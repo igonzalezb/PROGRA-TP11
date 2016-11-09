@@ -22,7 +22,7 @@
 #define HARDWARE 1 //1 terminal + hardware; 0 solo terminal
 
 
-#define VALIDO ((((c<='7') && (c>='0')) || (c=='s') || (c=='c') || (c=='b'))) //Teclas validas del teclado
+#define VALIDO ((((c<='7') && (c>='0')) || (c=='s') || (c=='c') || (c=='b') || (c==' ') )) //Teclas validas del teclado
 
 #endif /* MAIN_H */
 
