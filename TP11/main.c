@@ -38,21 +38,20 @@ int main(void)
     else    //Terminal y Hardware
     {
             //=======================================================================================================================================================================================================================================================================
-        pinsT leds[] = {{"LED_0","4","out",'0','0'}, //ver de sacar el CANT_LEDS.....
-            {"LED_1","17","out",'0','0'},
-                {"LED_2","18","out",'0','0'},
-                    {"LED_3","27","out",'0','0'},
-                        {"LED_4","22","out",'0','0'},
-                            {"LED_5","23","out",'0','0'},
-                                {"LED_6","24","out",'0','0'},
-                                    {"LED_7","25","out",'0','0'}
-                                                                  };
+        pinsT leds[] = {{"LED_0","4","out",'0','0'},
+                            {"LED_1","17","out",'0','0'},
+                                {"LED_2","18","out",'0','0'},
+                                    {"LED_3","27","out",'0','0'},
+                                        {"LED_4","22","out",'0','0'},
+                                            {"LED_5","23","out",'0','0'},
+                                                {"LED_6","24","out",'0','0'},
+                                                    {"LED_7","25","out",'0','0'}};
         
         inicio_estado_pines (leds);
         system("clear");
         
         printf("Bienvenido!\n");
-        printf("INSTRUCCIONES:\n Si presiona un numero del '0' al '7' se enciende el LED de esa posicion\n Si presiona 'b' parpadean los LED encendidos\n Si presiona 's' se encienden todos\n Si presiona 'c' se apagan todos\n Si presiona 'ESC' sale del programa\n ");
+        printf("INSTRUCCIONES:\n Si presiona un numero del '0' al '7' se enciende o apaga el LED de esa posicion\n Si presiona 'b' parpadean los LED encendidos hasta que se aprete 'b' de nuevo\n Si presiona 's' se encienden todos\n Si presiona 'c' se apagan todos\n Si presiona 'ESC' sale del programa\n ");
         printf("\n\n Por favor, presione ENTER para comenzar");
         while ((c = getchar()) != '\n')
             {
