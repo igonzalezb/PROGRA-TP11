@@ -42,42 +42,59 @@ MY_REG validacion (char c, pinsT leds[], MY_REG port_a) //Recibo el valor de la 
             
         case 'b': //Los leds prendidos parpadean (se apagan y se vuelven a prender) VER PARPADEOOOOO
         {
+            int k = 0;
+            char c;
             for (n=0; n <= CANT_LEDS; n++)    //Se hace una copia del estado de los pines en el momento
             {
                 leds[n].value_copy = leds[n].value;
-                printf("value: %c\n", leds[n].value);
-                printf("value_copy: %c\n", leds[n].value_copy);
             }
-            int k = 0;
             
-            while ((k == 0)) //ver
+            while (c != 'b')
             {
+                
                 k = kbhit();
-                for (n=0; n <= CANT_LEDS; n++)   //LEDS
+                if (k!=0)
                 {
-                    if (leds[n].value_copy == '1')
-                    {
-                        leds[n].value = ((leds[n].value_copy) - '1');
-                        
-                    }
-                    set_pin_zero_or_one (n,leds);
+                    c = (fgetc(stdin));
                 }
-                //port_a = case_blink (port_a);
-                sleep(1); //VER DE PONER OTRO TIMER
-                //system("clear"); //esta bien dejar esto?
-                //--k;
+                else
+                {
+                    for (n=0; n <= CANT_LEDS; n++)   //LEDS
+                        {
+                            if (leds[n].value_copy == '1')
+                            {
+                                leds[n].value = '0';
+
+                            }
+                            set_pin_zero_or_one (n,leds);
+                        }
+                        port_a = case_blink (port_a);
+                        //sleep(1); //VER DE PONER OTRO TIMER
+                        usleep(300000);
+                        system("clear");
+                        
+                       for (n=0; n <= CANT_LEDS; n++)   //LEDS
+                        {
+                            if (leds[n].value_copy == '1')
+                            {
+                                leds[n].value = '1';
+
+                            }
+                            set_pin_zero_or_one (n,leds);
+                        }
+                    impresion(port_a);
+                    usleep(300000);
+                    system("clear");
+                }
                
-            
-            
-            
             }
+            
             for (n=0; n <= CANT_LEDS; n++)   //Se guardan en value los estados de los pines antes del parpadeo.
             {
                 leds[n].value = leds[n].value_copy;
-                printf("value: %c\n", leds[n].value);
-                printf("value_copy: %c\n", leds[n].value_copy);
+                
             }
-           // case_blink (port_a);
+            impresion(port_a);
         }
         break;
             

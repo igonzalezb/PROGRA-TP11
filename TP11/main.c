@@ -49,7 +49,7 @@ int main(void)
                                                                   };
         
         inicio_estado_pines (leds);
-        //system("clear");
+        system("clear");
         
         printf("Bienvenido!\n");
         printf("INSTRUCCIONES:\n Si presiona un numero del '0' al '7' se enciende el LED de esa posicion\n Si presiona 'b' parpadean los LED encendidos\n Si presiona 's' se encienden todos\n Si presiona 'c' se apagan todos\n Si presiona 'ESC' sale del programa\n ");
@@ -58,7 +58,7 @@ int main(void)
             {
                continue; 
             }
-        //system("clear");
+        system("clear");
         //==========================================================================================================================================================================================================================================================================
 
             port_a.w.word = 0x0000; //Asi empiezan todos los leds apagados
@@ -70,19 +70,20 @@ int main(void)
                 i=kbhit();
                 if (i!=0)
                 {
-                    c= (fgetc(stdin)); //Obtengo lo ingresado por el teclado
+                    c = (fgetc(stdin)); //Obtengo lo ingresado por el teclado
                    
                     if (VALIDO) //Si la tecla ingresada es valida continuo
                     {
-                        //system("clear"); //Limpio pantalla
+                        system("clear"); //Limpio pantalla
                         port_a = validacion(c, leds, port_a); //Ejecuto la operacion ingresada por el teclado
+                        
                     }
                 }
             }
             nonblock(NB_DISABLE);
         
             unexport_all_pins(leds);
-            //system("clear"); //Limpio la pantalla
+            system("clear"); //Limpio la pantalla
             return (0);
     }
 }

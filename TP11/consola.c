@@ -38,9 +38,6 @@ MY_REG case_blink (MY_REG port_a)
     MY_REG blink;
     blink.w.word = 0x0000;
     impresion (blink);
-    usleep(300000);
-    //system("clear");
-    impresion (port_a);
     return port_a;
 }
 
@@ -61,7 +58,7 @@ void impresion (MY_REG port_a)
     //=================TERMINAL==============================================================
     long binary;
     binary = decimalToBinary(port_a); //Convierto numero a un int "binario"
-    //system("clear");
+    system("clear");
     printf("LEDs in PORTA: %08ld\n", binary); //Lo imprimo en pantalla
 }
 
