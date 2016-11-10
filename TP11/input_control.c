@@ -11,9 +11,6 @@
 #include "input_control.h"
 
 
-
-
-
 MY_REG validacion (char c, pinsT leds[], MY_REG port_a) //Recibo el valor de la tecla ingresada y el arreglo donde está la info de los pines.
 {
     int n;
